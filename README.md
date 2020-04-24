@@ -11,12 +11,14 @@ Guatemala, April 2020. This project creates a api gateway to consume lambda func
 In this [module](/modules/Rol/main.tf) i define all the roles and policies that will be used in the rest of modules.
 
 - aws_iam_role_policy
+This policies will be defined to increase the security and just give the needed permissions to each lambda function.
     - terraform-politica-put-elmer
     - terraform-politica-edit-elmer
     - terraform-politica-read-elmer
     - terraform-politica-delete-elmer
 
 - aws_iam_role
+This roles will be defined to attach to each lambda function to increase the security.
     - terraform-rol-put-elmer
     - terraform-rol-edit-elmer
     - terraform-rol-read-elmer
@@ -32,18 +34,21 @@ In this [module](/modules/Dynamo/main.tf) i define the dynamo db table that will
 In this [module](/modules/Lambda/main.tf) i define every lambda function.
 
 - Code Lambda functions
-    - delete.js
-    - get_all.js
-    - put.js
-    - update.js
+This code was written using node js.
+    - [delete.js](/modules/Lambda/delete.js)
+    - [get_all.js](/modules/Lambda/get_all.js)
+    - [put.js](/modules/Lambda/put.js)
+    - [update.js](/modules/Lambda/update.js)
 
 - archive_file
+It was necessary compress the code in a zip file.
     - zip_get_all
     - zip_put
     - zip_delete
     - zip_update
 
 - aws_lambda_function
+There was necessary defina every lambda function that will be consumed by the api gateway.
     - terraform-lambda_get_all-elmer
     - terraform-lambda_put-elmer
     - terraform-lambda_delete-elmer
@@ -80,6 +85,7 @@ In this [module](/modules/Lambda/main.tf) i define a HTPP api to comunicate lamb
     - lambda_update
 
 - aws_lambda_permission
+It was necessary define permissions for every lambda function.
     - apigw_get
     - apigw_put
     - apigw_delete
